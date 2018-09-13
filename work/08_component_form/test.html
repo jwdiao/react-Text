@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>09_form</title>
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+  /*
+  需求: 自定义包含表单的组件
+    1. 界面如下所示
+    2. 输入用户名密码后, 点击登陆提示输入信息
+    3. 不提交表单
+  */
+
+  class Form extends React.Component {
+    login = (event) => {
+      // 阻止事件的默认行为
+      event.preventDefault()
+      const username = this.refs.username.value
+      const pwd = this.refs.pwd.value
+      alert('提交用户信息--'+username +'---'+pwd)
+    }
+    render () {
+      return (
+        <form action='/xxx' method="post">
+          用户名: <input type="text" ref='username'/>
+          密码: <input type="password" ref='pwd'/>
+          <input type="submit" value='登陆' onClick={this.login}/>
+        </form>
+      )
+    }
+  }
+  ReactDOM.render(<Form/>, document.getElementById('example'))
+
+
+
+</script>
+</body>
+</html>
